@@ -1,0 +1,178 @@
+/* 
+frog green-   rgb(52, 150, 0) 
+Happy Green - rgb(0, 243, 0)
+
+*/
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato";
+  font-weight: 400px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  /* after I did the rgba */
+  padding: 30px;
+}
+
+div.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to left bottom,
+      rgba(52, 150, 0, 0.6),
+      rgba(0, 243, 0, 0.6)
+    ),
+    url("../nat-2.jpg");
+
+  object-fit: cover;
+  background-size: 100%, 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  clip-path: polygon(0% 0%, 100% 0, 100% 75%, 0% 100%);
+}
+
+div.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+div.logo-box:hover {
+  animation-name: moveInRight;
+  animation-duration: 2s;
+}
+
+.logo-img {
+  height: 35px;
+}
+
+div.title-div {
+  position: absolute;
+  /* this is to the parent */
+  top: 40%;
+  left: 50%;
+  /* this is to the elemtn itsef */
+  transform: translate(-50%, -50%);
+  /* for the butoon */
+  text-align: center;
+}
+
+h1.h1-title {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.main-title {
+  display: block;
+  font-size: 60px;
+  font-weight: 400px;
+  letter-spacing: 35px;
+  /* you can also short hand it */
+  /* animation: moveInLeft, ease-in, 3s; */
+  animation-name: moveInLeft;
+  animation-duration: 5s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-in;
+  /* for the shaking */
+  /* backface-visibility: hidden; */
+}
+
+.sec-title {
+  display: block;
+  font-size: 20px;
+  font-weight: 400px;
+  letter-spacing: 21px;
+  animation-name: moveInRight;
+  animation-duration: 5s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    opacity: 0.5;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes testingFrame {
+  0% {
+  }
+
+  100% {
+  }
+}
+
+.button:link {
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #fff;
+  color: #777;
+  display: inline-block;
+  padding: 35px, 40px;
+  margin-top: 20px;
+  border-radius: 100px;
+  width: 200px;
+  transition: all 1s;
+  position: relative;
+}
+/* .button:visited {
+  text-decoration: none;
+} */
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px, 10px, 20px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+  transform: translateY(-1px);
+  box-shadow: 0px, 10px, 20px rgba(0, 0, 0, 0.2);
+}
+
+.button::after {
+  /* content and display are required */
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  background-color: white;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  transition: 0.5s;
+}
+.button:hover::after {
+  transform: scale(1.5);
+  opacity: 0;
+}

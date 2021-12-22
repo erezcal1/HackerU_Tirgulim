@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Comforter Brush", cursive;
+
+  font-family: "M PLUS 1 Code", sans-serif;
+
+  font-family: "Oswald", sans-serif;
+}
+.container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background: linear-gradient(
+      to left bottom,
+      rgba(33, 65, 33, 0.5),
+      rgba(182, 182, 3, 0.5)
+    ),
+    url(./nat-2.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1%;
+}
+header img {
+  height: 50px;
+}
+header img:hover {
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+}
+main {
+  justify-content: center;
+  align-items: center;
+}
+main h1 {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  font-size: 3rem;
+  letter-spacing: 20px;
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+}
+main .letters {
+  display: block;
+}
+main h2 {
+  font-size: 2rem;
+  margin: 2rem;
+  letter-spacing: 5px;
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+}
+main .btn {
+  display: flex;
+  justify-self: center;
+  text-align: center;
+  margin: 2rem;
+  padding: 5%;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 1.2rem 0.2rem;
+}
+.btn span {
+  display: flex;
+  justify-content: center;
+}
+@keyframes moveInLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  80% {
+    transform: translateX(10%);
+  }
+  90% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

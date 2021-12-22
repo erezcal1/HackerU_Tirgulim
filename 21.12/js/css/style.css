@@ -1,0 +1,9 @@
+div#innerDiv {
+  display: flex;
+}
+
+div#innerDiv div.smallDiv {
+  width: 100px;
+  height: 100px;
+  border: dotted black 1px;
+}
