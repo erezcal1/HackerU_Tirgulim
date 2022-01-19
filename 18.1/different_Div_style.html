@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Different Div style</title>
+  <style>
+    #display {
+      display: flex;
+      justify-content: space-evenly;
+      width: 500px;
+    }
+
+    .dis_Div {
+      width: 150px;
+      height: 150px;
+      border: 3px dotted black;
+      margin: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <form action="" id="my_Form" onsubmit="form_Sub(event)">
+      <input type="range" name="red" id="red" class="colors" min="0" max="256">
+      <input type="range" name="green" id="green" class="colors" min="0" max="256">
+      <input type="range" name="blue" id="blue" class="colors" min="0" max="256">
+      <input type="submit" value="Click for submit">
+    </form>
+
+    <div id="display">
+      <div class="dis_Div" id="first"></div>
+      <div id="direction"></div>
+      <div class="dis_Div" id="second"></div>
+    </div>
+
+    <form action="" id="fav_Form">
+      <input type="range" name="select" id="select" min="0" max="1">
+      <input type="text" name="fav_Color" id="fav_Color">
+      <input type="submit" value="Click for submit">
+    </form>
+  </div>
+  <script>
+    let form = document.getElementById('my_Form');
+
+    let display = document.querySelectorAll('.dis_Div');
+
+    let req = form.elements;
+
+    let red = req.red;
+    let green = req.green;
+    let blue = req.blue;
+    let fav_Colors = [];
+    let fav_Form = document.getElementById('fav_Form');
+    let fav_Color = document.getElementById('fav_Color');
+    let dir = document.getElementById('select');
+    let direction = document.getElementById('direction');
+    let elem_Val = 0;
+
+
+    let ind_Place = 0;
+    let div_Color = '';
+
+    function form_Sub(evt) {
+      evt.preventDefault();
+
+      let r = red.value;
+      let g = green.value;
+      let b = blue.value;
+      div_Color = `rgb(${r},${g},${b})`;
+      display[ind_Place].style.backgroundColor = div_Color;
+
+      ind_Place = ind_Place == 0 ? 1 : 0;
+
+      // means the same 
+      // 1.
+      // ind_Place ==0 ? ind_Place = 1 : ind_Place = 0;
+      // 2.
+      // if (ind_Place == 0) {
+      //   ind_Place = 1;
+      // } else {
+      //   ind_Place = 0;
+      // }
+    }
+
+    fav_Form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      let fav_Color = document.getElementById('fav_Color');
+      let input_Name = fav_Color.value;
+      console.log(display[elem_Val].style.backgroundColor);
+      let obj = {
+        name: input_Name,
+        shade: div_Color
+      };
+      fav_Colors.push(obj);
+      console.log(obj);
+      fav_Color.value = '';
+    });
+
+    dir.addEventListener('change', () => {
+      let val = dir.value;
+      msg = val == 0 ? '<=' : '=>';
+
+      direction.innerHTML = msg;
+
+      elem_Val = val;
+    });
+  </script>
+</body>
+
+</html>
